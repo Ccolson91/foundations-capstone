@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
+  <link rel="stylesheet" href="index.css">
+  <title>My Landing Page</title>
+</head>
+<body>
+  <nav>
+    <div class="logo">
+      <img src="https://randomuser.me/api/portraits/men/76.jpg" alt="user"/>
+    </div>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="create-new.html">Create New</a></li>
+      <li><a href="existing-offers.html">Existing Offers</a></li>
+      <li><a href="past-offers.html">Past Offers</a></li>
+      <li><a href="client-info.html">Client Info</a></li>
+    </ul>
+  </nav>
+
+  <header>
+    <button id="toggle" class="toggle">
+      <i class="fa fa-bars fa-2x"></i>
+    </button>
+
+    <h1>My Landing Page</h1>
+
+    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Qui, eos.</p>
+
+    <button class="signin-btn" id="open-signin">Sign In</button>
+    <button class="signup-btn" id="open-signup">Sign Up</button>
+  </header>
+
+  <div class="container">
+
+    <h2>What is this landing page about?</h2>
+
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam illo rem eius, error consequatur aspernatur sit adipisci sapiente corrupti. Doloribus voluptatum eveniet distinctio incidunt enim optio. Dolorum ea deserunt voluptate?</p>
+
+    <h2> Tell me more</h2>
+
+    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Natus eaque vel non ducimus praesentium qui labore magni cumque recusandae, cum iusto placeat corporis beatae explicabo debitis quis molestias sunt. Aperiam assumenda sapiente fuga maiores libero esse asperiores perspiciatis quibusdam cum.</p>
+  </div>
+
+  <ul>
+    <li>Main page when someone arrives on site</li>
+    <li>Buttons should be removed after logging in or signing up</li>
+    <li>Welcome's user to their console and tells them exactly how to use it</li>
+    <li>Give some success stories</li>
+    <li>How to create their offers...it's simple</li>
+  </ul>
+
+  <!-- SIGN UP MODAL -->
+  <div class="modal-container-signup" id="modal-signup">
+    <div class="modal-signup">
+      <button class="close-btn-signup" id="close-signup">
+        <i class="fa fa-times"></i>
+      </button>
+      <div class="modal-header-signup">
+        <h3>Sign Up</h3>
+      </div>
+      <div class="modal-content-signup">
+        <p>Register with us today!</p>
+        <form action="" class="modal-form-signup">
+          <div>
+            <label for="name">Name</label>
+            <input type="text" id="name" placeholder="Enter Name" class="form-input-signup">
+          </div>
+          <div>
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="Enter Email" class="form-input-signup">
+          </div>
+          <div>
+            <label for="password">Password</label>
+            <input type="password" id="password" placeholder="Enter Password" class="form-input-signup">
+          </div>
+          <div>
+            <label for="password2">Confirm Password</label>
+            <input type="password" id="password2" placeholder="Confrim Password" class="form-input-signup">
+          </div>
+          <input type="submit" value="Submit" class="submit-btn">
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- SIGN IN MODAL -->
+  <div class="modal-container-signin" id="modal-signin">
+    <div class="modal-signin">
+      <button class="close-btn-signin" id="close-signin">
+        <i class="fa fa-times"></i>
+      </button>
+      <div class="modal-header-signin">
+        <h3>Sign In</h3>
+      </div>
+      <div class="modal-content-signin">
+        <p>Welcome back! Please sign in below.</p>
+        <form action="" class="modal-form-signin">
+          <div>
+            <label for="email">Email</label>
+            <input type="email" id="user-email" placeholder="Enter Email" class="form-input-signin">
+          </div>
+          <div>
+            <label for="password">Password</label>
+            <input type="password" id="user-password" placeholder="Enter Password" class="form-input-signin">
+          </div>
+          <input type="submit" value="Submit" class="submit-btn-signin">
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+  <script src="index.js"></script>
+</body>
+</html>

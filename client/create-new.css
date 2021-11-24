@@ -1,0 +1,73 @@
+.create-btn {
+  background-color: lightgray;
+  border: 3px dashed gray;
+  border-radius: 10px;
+  color: gray;
+  cursor: pointer;
+  padding: 50px 100px;
+}
+
+.modal-container-create-new {
+  background-color: rgba(0, 0, 0, 0.6);
+  /* display: none; */
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.modal-container-create-new.show-modal-create-new {
+  display: block;
+}
+
+.modal-create-new {
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  position: absolute;
+  overflow: hidden;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 100%;
+  width: 400px;
+  animation-name: modalopen;
+  animation-duration: var(--modal-duration);
+}
+
+.modal-header-create-new {
+  background: var(--primary-color);
+  color: #fff;
+  padding: 15px;
+}
+
+.modal-header-create-new h3 {
+  margin: 0;
+}
+
+.modal-content-create-new {
+  padding: 20px;
+}
+
+.modal-form-create-new div {
+  margin: 15px 0;
+}
+
+.modal-form-create-new label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.modal-form-create-new .form-input-create-new {
+  padding: 8px;
+  width: 100%;
+}
+
+.close-btn-create-new {
+  background: transparent;
+  font-size: 25px;
+  position: absolute;
+  top: 0;
+  right: 0;
+}

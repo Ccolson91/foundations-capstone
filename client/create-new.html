@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
   <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="create-new.css">
   <title>Create Offer</title>
 </head>
 <body>
@@ -37,6 +38,10 @@
 
     <h2>What is this landing page about?</h2>
 
+    <button id="create-new" class="create-btn">
+      <i class="fa fa-plus-circle fa-4x"></i>
+    </button>
+
     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam illo rem eius, error consequatur aspernatur sit adipisci sapiente corrupti. Doloribus voluptatum eveniet distinctio incidunt enim optio. Dolorum ea deserunt voluptate?</p>
 
     <h2> Tell me more</h2>
@@ -54,7 +59,45 @@
     <li>upon submittal an offer should be created using their inputs and should be placed in the existing offers page</li>
     <li>There should be a list of 3 or 4 templates already made for them</li>
   </ul>
+
+  <!-- Create New Modal -->
+  <div class="modal-container-create-new" id="modal-create-new">
+    <div class="modal-create-new">
+      <button class="close-btn-create-new" id="close-create-new">
+        <i class="fa fa-times"></i>
+      </button>
+      <div class="modal-header-create-new">
+        <h3>Create a new offer!</h3>
+      </div>
+      <div class="modal-content-create-new">
+        <h4>Creating an online offer is as easy as 1...2...3!</h4>
+        <p>Step 1: Fill out this form!</p>
+        <p>Step 2: Review your offer!</p>
+        <p>Step 3: Share with friends!</p>
+        <form action="" class="modal-form-create-new">
+          <div>
+            <label for="name">Name</label>
+            <input type="text" id="name" placeholder="Enter Name" class="form-input-create-new">
+          </div>
+          <div>
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="Enter Email" class="form-input-create-new">
+          </div>
+          <div>
+            <label for="password">Password</label>
+            <input type="password" id="password" placeholder="Enter Password" class="form-input-create-new">
+          </div>
+          <div>
+            <label for="password2">Confirm Password</label>
+            <input type="password" id="password2" placeholder="Confrim Password" class="form-input-create-new">
+          </div>
+          <input type="submit" value="Submit" class="submit-btn">
+        </form>
+      </div>
+    </div>
+  </div>
   
+  <script src="create-new.js"></script>
   <script src="index.js"></script>
 </body>
 </html>

@@ -1,8 +1,13 @@
 const express = require('express')
+const cors = require('cors')
 const app = express()
 const path = require('path')
 
 app.use(express.json())
+
+const { createOffer } = require('./controller.js')
+
+app.post(`/existing-offers`, createOffer)
 
 
 

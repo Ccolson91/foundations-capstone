@@ -71,33 +71,45 @@
       </div>
       <div class="modal-content-create-new">
         <h4>Creating an online offer is as easy as 1...2...3!</h4>
-        <p>Step 1: Fill out this form!</p>
-        <p>Step 2: Review your offer!</p>
-        <p>Step 3: Share with friends!</p>
-        <form action="" class="modal-form-create-new">
+        <p>Fill out the form below and you'll be on your way!</p>
+        <form action="" class="modal-form-create-new" id="create-new-form">
           <div>
-            <label for="name">Name</label>
-            <input type="text" id="name" placeholder="Enter Name" class="form-input-create-new">
+            <label for="business-name">Business Name</label>
+            <input type="text" id="business-name" placeholder="Enter Business Name" class="form-input-create-new">
+            <!-- <i class="fas fa-check-circle"></i> -->
+            <!-- <i class="fas fa-exclamation-circle"></i> -->
+            <!-- <small>Error message</small> -->
           </div>
           <div>
-            <label for="email">Email</label>
-            <input type="email" id="email" placeholder="Enter Email" class="form-input-create-new">
+            <label for="stylist-name"> Stylist Name</label>
+            <input type="text" id="stylist-name" placeholder="Enter Stylist Name" class="form-input-create-new">
+            <!-- <i class="fas fa-check-circle"></i> -->
+            <!-- <i class="fas fa-exclamation-circle"></i> -->
+            <!-- <small>Error message</small> -->
           </div>
           <div>
-            <label for="password">Password</label>
-            <input type="password" id="password" placeholder="Enter Password" class="form-input-create-new">
+            <label for="social-link">Social Media Link</label>
+            <input type="text" id="social-link" placeholder="Enter Social Media" class="form-input-create-new">
           </div>
           <div>
-            <label for="password2">Confirm Password</label>
-            <input type="password" id="password2" placeholder="Confrim Password" class="form-input-create-new">
+            <label for="upload-image">Upload image</label>
+            <input type="text" id="upload-image" placeholder="Paste an image URL" class="form-input-create-new">
           </div>
-          <input type="submit" value="Submit" class="submit-btn">
+          <div class="offer-selector">
+            <h4>Select your offer!</h4>
+            <input type="radio" id="25-off" name="new-guest-offer" value="$25 off your first visit of $50 or more!">
+            <label for="25-off">$25 off your first visit of $50 or more!</label><br>
+            <input type="radio" id="50-off" name="new-guest-offer" value="$50 off your first visit of $100 or more!">
+            <label for="50-off">$50 off your first visit of $100 or more!</label><br>
+            <input type="radio" id="bogo-offer" name="new-guest-offer" value="Buy 1 get 1 free on any product in store!">
+            <label for="bogo-offer">Buy 1 get 1 free on any product in store!</label>
+          </div>
+          <input type="submit" value="Submit" class="submit-btn" id="submit-create-btn">
         </form>
       </div>
     </div>
   </div>
-  
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <script src="create-new.js"></script>
-  <script src="index.js"></script>
 </body>
 </html>

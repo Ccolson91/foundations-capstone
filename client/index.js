@@ -1,4 +1,6 @@
 const toggle = document.getElementById('toggle')
+// Toggle Navigation
+toggle.addEventListener('click', () => document.body.classList.toggle('show-nav'))
 
 const modalSignup = document.getElementById('modal-signup')
 const signUp = document.getElementById('open-signup')
@@ -8,8 +10,6 @@ const modalSignin = document.getElementById('modal-signin')
 const signIn = document.getElementById('open-signin')
 const closeSignin = document.getElementById('close-signin')
 
-// Toggle Navigation
-toggle.addEventListener('click', () => document.body.classList.toggle('show-nav'))
 
 // Show modal sign up
 signUp.addEventListener('click', () => modalSignup.classList.add('show-modal-signup'))

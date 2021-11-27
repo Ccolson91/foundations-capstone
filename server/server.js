@@ -6,8 +6,14 @@ const app = express()
 app.use(express.json())
 app.use(cors())
 
-const { createOffer, deleteOffer } = require('./controller.js')
+// homepage login and registration
+const { login, register } = require('./authcontroller.js')
 
+app.post('/home', login)
+app.post('/home', register)
+
+// create and delete new offer
+const { createOffer, deleteOffer } = require('./controller.js')
 
 app.post('/create-new', createOffer)
 app.delete('/create-new/:id', deleteOffer)

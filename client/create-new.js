@@ -1,7 +1,3 @@
-// const { title } = require("process")
-
-// const { default: axios } = require("axios")
-
 // Toggle Navigation
 const toggle = document.getElementById('toggle')
 toggle.addEventListener('click', () => document.body.classList.toggle('show-nav'))
@@ -30,6 +26,8 @@ const offersCallback = ({ data: offers }) => displayOffers(offers)
 // const errCallback = err => console.log(err.response.data)
 // create offer - axios POST request
 const createOffer = body => axios.post(baseURL, body).then(offersCallback).catch(error => { console.log(error)})
+//delete offer - axios DELETE request
+const deleteOffer = id => axios.delete(`${baseURL}/${id}`).then(offersCallback).catch( error => { console.log(error)})
 
 //handler function to be passed in to event listener
 function submitHandler(e){
@@ -70,6 +68,10 @@ function createOfferCard(offer){
   <p class='offer-busName'>${offer.bus_name}</p>
   <p class='offer-stylistName'>${offer.stylist_name}</p>
   <p class='offer-selected'>${offer.offer}
+  <br>
+  <br>
+  <button onclick='submit()'>Submit!</button>
+  <button onclick='deleteOffer(${offer.id})'>Delete</button>
   ` 
   
   // append offerCard to the offersContainer
@@ -82,6 +84,11 @@ function displayOffers(arr){
   for(let i = 0; i < arr.length; i++){
     createOfferCard(arr[i])
   }
+  // createOfferCard(arr[i])
+}
+
+function submit(e){
+  
 }
 
 

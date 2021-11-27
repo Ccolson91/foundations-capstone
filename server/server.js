@@ -6,10 +6,11 @@ const app = express()
 app.use(express.json())
 app.use(cors())
 
-const { createOffer } = require('./controller.js')
+const { createOffer, deleteOffer } = require('./controller.js')
 
 
 app.post('/create-new', createOffer)
+app.delete('/create-new/:id', deleteOffer)
 
 
 

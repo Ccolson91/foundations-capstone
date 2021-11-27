@@ -73,3 +73,9 @@
   top: 0;
   right: 0;
 }
+
+.offer-card {
+  border: 2px solid black;
+  padding: 50px;
+  margin: 5px;
+}

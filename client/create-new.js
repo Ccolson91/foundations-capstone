@@ -21,14 +21,15 @@ closeCreateNew.addEventListener('click', () => {
 })
 //Hide modal create new on outside click
 window.addEventListener('click', e => e.target == modalCreateNew ? modalCreateNew.classList.remove('show-modal-create-new') : false)
+
 // assign a variable to the base url
-const baseURL =  `http://localhost:4040/`
+const baseURL =  `http://localhost:4040/create-new`
 // assigns a variable to function that runs displayOffers function on offers
 const offersCallback = ({ data: offers }) => displayOffers(offers)
 //assigns variable to error callback
 // const errCallback = err => console.log(err.response.data)
-//create offer - axios POST request
-const createOffer = body => axios.post(`${baseURL}/existing-offers`, body).then(offersCallback).catch(error => { console.log(error)})
+// create offer - axios POST request
+const createOffer = body => axios.post(baseURL, body).then(offersCallback).catch(error => { console.log(error)})
 
 //handler function to be passed in to event listener
 function submitHandler(e){
@@ -36,26 +37,25 @@ function submitHandler(e){
   
   let busName = document.querySelector('#business-name')
   let stylistName = document.querySelector('#stylist-name')
-  let social = document.querySelector('#social-link')
   let offerChoice = document.querySelector('input[name="new-guest-offer"]:checked')
-  let offerImage = document.querySelector('upload-image')
   
   let bodyObj = {
-    busName: busName.value,
-    stylistName: stylistName.value,
-    social: social.value,
-    // offerImage: offerImage.value,
-    // offerChoice: offerChoice.value
+    bus_name: busName.value,
+    stylist_name: stylistName.value,
+    offer: offerChoice.value
   }
   
   createOffer(bodyObj)
+
   
   busName.value = ''
   stylistName.value = ''
-  social.value = ''
-  // offerImage.value = ''
-  // offerChoice.value = false
+  offerChoice.checked = false
+
+  // Remove modal after button click
+  modalCreateNew.classList.remove('show-modal-create-new')
 }
+
 
 // assign variable for container where offers will go
 const offersContainer = document.querySelector('#offers-container')
@@ -66,18 +66,18 @@ function createOfferCard(offer){
   // add classlist to the variable created
   offerCard.classList.add('offer-card')
   // add html to the variable offerCard
-  offerCard.innerHTML = `<img alt='new guest offer' src=${offer.offerImage} class='offer-image'/>
-  <p class='offer-busName'>${offer.busName}</p>
-  <p class='offer-stylistName'>${offer.stylistName}</p>
-  <p class='offer-social'>${offer.social}</p>
-  <p class='offer-selected'>${offer.offerChoice}` 
+  offerCard.innerHTML = `
+  <p class='offer-busName'>${offer.bus_name}</p>
+  <p class='offer-stylistName'>${offer.stylist_name}</p>
+  <p class='offer-selected'>${offer.offer}
+  ` 
   
   // append offerCard to the offersContainer
   offersContainer.appendChild(offerCard)
 }
 
 // function to display offer
-function displayOffer(arr){
+function displayOffers(arr){
   offersContainer.innerHTML = ``
   for(let i = 0; i < arr.length; i++){
     createOfferCard(arr[i])

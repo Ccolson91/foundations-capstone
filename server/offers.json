@@ -3,24 +3,18 @@
     "id": 1,
     "bus_name": "Mon Reve",
     "stylist_name": "Nicole David",
-    "social": "https://www.facebook.com/monreve",
-    "image": null,
     "offer": "$25 off your first visit of $50 or more!"
   },
   {
     "id": 2,
     "bus_name": "Concept Salon",
     "stylist_name": "Kenzie Newschool",
-    "social": "https://www.facebook.com/conceptsalonn",
-    "image": null,
     "offer": "$50 off your first visit of $100 or more!"
   },
   {
     "id": 3,
     "bus_name": "Revive Salon",
     "stylist_name": "Gabriella Fitzmagic",
-    "social": "https://www.facebook.com/monreve",
-    "image": null,
     "offer": "$25 off your first visit of $50 or more!"
   }
 ]

@@ -21,5 +21,15 @@ module.exports = {
   register: (req, res) => {
     console.log('registering user...')
     console.log(req.body)
+    let {
+      newUserName,
+      newUserEmail,
+      newUserPassword
+    } = req.body
+
+    sequelize.query(`insert into users (user_name, user_email, user_password)
+    values('${newUserName}','${newUserEmail}', '${newUserPassword}');`)
+      .then(() => res.sendStatus(200))
+        .catch((err) => console.log(err))
   }
 }

@@ -1,5 +1,19 @@
 const offers = require('./offers.json')
-let globalId = 4
+let globalId = 6
+require('dotenv').config()
+
+const Sequelize = require('sequelize')
+
+const {CONNECTION_STRING} = process.env
+
+const sequelize = new Sequelize(CONNECTION_STRING, {
+  dialect: 'postgres',
+  dialectOptions: {
+    ssl: {
+      rejectUnauthorized: false
+    }
+  }
+})
 
 module.exports = {
   getAllOffers: (req, res) => {

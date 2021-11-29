@@ -33,22 +33,22 @@ const deleteOffer = id => axios.delete(`${baseURL}/${id}`).then(offersCallback).
 function submitHandler(e){
   e.preventDefault()
   
-  let busName = document.querySelector('#business-name')
-  let stylistName = document.querySelector('#stylist-name')
-  let offerChoice = document.querySelector('input[name="new-guest-offer"]:checked')
+  let bus_name = document.querySelector('#business-name')
+  let stylist_name = document.querySelector('#stylist-name')
+  let offer_choice = document.querySelector('input[name="new-guest-offer"]:checked')
   
   let bodyObj = {
-    bus_name: busName.value,
-    stylist_name: stylistName.value,
-    offer: offerChoice.value
+    bus_name: bus_name.value,
+    stylist_name: stylist_name.value,
+    offer: offer_choice.value
   }
   
   createOffer(bodyObj)
 
   
-  busName.value = ''
-  stylistName.value = ''
-  offerChoice.checked = false
+  bus_name.value = ''
+  stylist_name.value = ''
+  offer_choice.checked = false
 
   // Remove modal after button click
   modalCreateNew.classList.remove('show-modal-create-new')
@@ -71,8 +71,9 @@ function createOfferCard(offer){
   <br>
   <br>
   <button onclick='submit()'>Submit!</button>
-  <button onclick='deleteOffer(${offer.id})'>Delete</button>
+  <button id = 'delete-staged-offer' onclick='deleteOffer(${offer.id})'>Delete</button>
   ` 
+  const deleteStagedBtn = document.getElementById('delete-staged-offer')
   
   // append offerCard to the offersContainer
   offersContainer.appendChild(offerCard)
@@ -81,15 +82,15 @@ function createOfferCard(offer){
 // function to display offer
 function displayOffers(arr){
   offersContainer.innerHTML = ``
-  for(let i = 0; i < arr.length; i++){
-    createOfferCard(arr[i])
-  }
-  // createOfferCard(arr[i])
+  // for(let i = 0; i < arr.length; i++){
+  //   createOfferCard(arr[i])
+  // }
+  createOfferCard(arr[arr.length - 1])
 }
 
-function submit(e){
+// function submit(e){
   
-}
+// }
 
 
 // Submit create new offer button

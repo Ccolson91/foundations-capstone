@@ -1,5 +1,7 @@
 // const { default: axios } = require("axios")
 
+// const { default: axios } = require("axios")
+
 const toggle = document.getElementById('toggle')
 // Toggle Navigation
 toggle.addEventListener('click', () => document.body.classList.toggle('show-nav'))
@@ -37,19 +39,29 @@ window.addEventListener('click', e => e.target == modalSignin ? modalSignin.clas
 
 // login function for axios POST request
 const login = body => axios.post('http://localhost:4040/login', body).then( res => {
-  alert(res.data)
+  if(res.data === "Login success"){
+    window.location.replace('/')
+  }
 }).catch(error => {
   console.log(error)
   alert('uh oh. Your request did not work')
 })
 
 // registration function for axios POST request
-const register = body => axios.post('http://localhost:4040/newuser', body).then( res => {
-  alert(res.data)
+const register = body => axios.post('http://localhost:4040/register', body).then( res => {
+  if(res.status === 200){
+    window.location.replace('http://127.0.0.1:5500/client/create-new.html')
+  }
 }).catch(error => {
   console.log(error)
   alert('uh oh. Your request did not work')
 })
+
+// Logout function with axios GET request
+const logout = () => {
+  axios.get('http://localhost:4040/logout', { withCredentials: true })
+    .then(res => window.location.replace('/'))
+}
 
 // login handler function
 
@@ -100,5 +112,17 @@ function registerSubmitHandler(e){
   modalSignup.classList.remove('show-modal-signup')
 }
 
+//Form authentication
+// checkSession = async () => {
+//   const response = await axios.get('http://localhost:4040/authenticate', { withCredentials: true })
+//   const data = response.data
+//   if(data.username){
+//     window.location.replace('/')
+//   }
+// }
+
+
+
+// document.addEventListener('DOMContentLoaded', checkSession)
 signUpForm.addEventListener('submit', registerSubmitHandler)
 signInForm.addEventListener('submit', loginSubmitHandler)

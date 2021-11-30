@@ -19,14 +19,14 @@ module.exports = {
   home: (req, res) => res.status(200).sendFile(path.join(__dirname, '../client/index.html')),
   getAllOffers: (req, res) => {
     sequelize.query(`
-      select * from current_offers;
+      select * from current_offers
+      where offer_id is not null;
     `)
     .then((dbRes) => res.status(200).send(dbRes[0]))
     .catch((err) => console.log(err))
     // res.status(200).send(offers)
   },
   createOffer: (req, res) => {
-    console.log(req.body)
     let { bus_name, stylist_name, offer, offer_choice } = req.body
     sequelize.query(` 
     insert into offers (offer_name)
@@ -47,6 +47,19 @@ module.exports = {
       return offer.id === +id
     })
     offers.splice(index, 1)
+    res.status(200).send(offers)
+  },
+  deleteExistingOffer: (req, res) => {
+    const {id} = req.params
+    // const index = offers.findIndex((offer) => {
+    //   return offer.id === +id
+    // })
+    // offers.splice(index, 1)
+    sequelize.query(`
+    delete
+    from current_offers
+    where offer_id = ${id};
+    `)
     res.status(200).send(offers)
   }
 }

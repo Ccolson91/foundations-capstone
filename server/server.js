@@ -30,7 +30,7 @@ app.post('/seed', seed)
 // homepage login and registration
 const { login, register, logout } = require('./authcontroller.js')
 // create and delete new offer
-const { createOffer, deleteOffer, home, getAllOffers } = require('./controller.js')
+const { createOffer, deleteOffer, home, getAllOffers, deleteExistingOffer } = require('./controller.js')
 
 app.get('/', home)
 // app.get('/authenticate', authenticate)
@@ -47,6 +47,7 @@ app.post('login', login)
 app.get('/existing-offers', getAllOffers)
 app.post('/existing-offers', createOffer)
 app.delete('/create-new/:id', deleteOffer)
+app.delete('/existing-offers/:id', deleteExistingOffer)
 // app.post('/existing-offers', submitOffer)
 
 

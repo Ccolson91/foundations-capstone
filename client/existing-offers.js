@@ -1,4 +1,6 @@
 // const { default: axios } = require("axios")
+
+// const { default: axios } = require("axios")
 const existingOffersContainer = document.getElementById('existing-offers-container')
 const toggle = document.getElementById('toggle')
 // Toggle Navigation
@@ -11,6 +13,8 @@ displayAllOffers(offers)
 
 const getAllOffers = () => axios.get(`http://localhost:4040/existing-offers`).then(showAllOffers).catch(err => console.log(err))
 
+const deleteExistingOffer = id => axios.delete(`http://localhost:4040/existing-offers/${id}`).then(showAllOffers).catch(error => { console.log(error)})
+
 function createExistingOfferCard(offer){
   const existingOfferCard = document.createElement('div')
   existingOfferCard.classList.add('existing-offer-card')
@@ -19,7 +23,9 @@ function createExistingOfferCard(offer){
   <p class='offer-busName'>${offer.bus_name}</p>
   <p class='offer-stylistName'>${offer.stylist_name}</p>
   <p class='offer-selected'>${offer.offer}</p>
+  <button id='permanent-delete' onclick='deleteExistingOffer(${offer.offer_id})'>Delete</button>
   `
+  // console.log(offer.offer)
   existingOffersContainer.appendChild(existingOfferCard)
 }
 

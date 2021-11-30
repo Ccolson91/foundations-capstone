@@ -18,7 +18,12 @@ const sequelize = new Sequelize(CONNECTION_STRING, {
 module.exports = {
   home: (req, res) => res.status(200).sendFile(path.join(__dirname, '../client/index.html')),
   getAllOffers: (req, res) => {
-    res.status(200).send(offers)
+    sequelize.query(`
+      select * from current_offers;
+    `)
+    .then((dbRes) => res.status(200).send(dbRes[0]))
+    .catch((err) => console.log(err))
+    // res.status(200).send(offers)
   },
   createOffer: (req, res) => {
     console.log(req.body)

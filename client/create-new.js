@@ -85,7 +85,7 @@ function createOfferCard(offer){
   offerCard.innerHTML = `
   <p class='offer-busName'>${offer.bus_name}</p>
   <p class='offer-stylistName'>${offer.stylist_name}</p>
-  <p class='offer-selected'>${offer.offer}
+  <p class='offer-selected'>${offer.offer}</p>
   `
   // <button onclick='createOffer(offer)'>Approve</button>
   // append offerCard to the offersContainer

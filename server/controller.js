@@ -21,16 +21,20 @@ module.exports = {
     res.status(200).send(offers)
   },
   createOffer: (req, res) => {
-    let { bus_name, stylist_name, offer } = req.body
-    let newOffer = {
-      id: globalId,
-      bus_name,
-      stylist_name,
-      offer
-    }
-    offers.push(newOffer)
-    res.status(200).send(offers)
-    globalId++
+    console.log(req.body)
+    let { bus_name, stylist_name, offer, offer_choice } = req.body
+    sequelize.query(` 
+    insert into offers (offer_name)
+    values('${offer}');
+    insert into current_offers (bus_name, stylist_name, offer_id)
+    values('${bus_name}', '${stylist_name}', '${offer_choice}');
+    select bus_name, stylist_name, offer_name, current_offers.offer_id
+    from offers
+    join current_offers
+    on current_offers.offer_id = offers.offer_id;
+    `)
+    .then(dbRes => res.status(200).send(dbRes[0]))
+    .catch(err => console.log('error ===>', err))
   },
   deleteOffer: (req, res) => {
     const {id} = req.params

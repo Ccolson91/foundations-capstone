@@ -1,3 +1,5 @@
+// const { default: axios } = require("axios")
+
 // Toggle Navigation
 const toggle = document.getElementById('toggle')
 toggle.addEventListener('click', () => document.body.classList.toggle('show-nav'))
@@ -22,14 +24,30 @@ window.addEventListener('click', e => e.target == modalCreateNew ? modalCreateNe
 const baseURL =  `http://localhost:4040/create-new`
 // assigns a variable to function that runs displayOffers function on offers
 const offersCallback = ({ data: offers }) => displayOffers(offers)
+const redirect = () => {
+    window.location.replace('http://127.0.0.1:5500/client/existing-offers.html')}
 //assigns variable to error callback
 // const errCallback = err => console.log(err.response.data)
 // create offer - axios POST request
-const createOffer = body => axios.post(baseURL, body).then(offersCallback).catch(error => { console.log(error)})
+const createOffer = body => axios.post(`http://localhost:4040/existing-offers`, body).then(redirect).catch(error => { console.log(error)})
 //delete offer - axios DELETE request
 const deleteOffer = id => axios.delete(`${baseURL}/${id}`).then(offersCallback).catch( error => { console.log(error)})
+//submit offer - axios PUT request
+// const submitOffer = body => axios.post(`http://localhost:4040/existing-offers/`, body).then( res => {
+//   if(res.status === 200){
+//     window.location.replace('http://127.0.0.1:5500/client/existing-offers.html')
+//   }
+// }).catch(error => {
+//   console.log(error)
+//   alert('uh oh. Your request did not work')
+// })
 
 //handler function to be passed in to event listener
+let bodyObj = {
+  bus_name: 'business',
+  stylist_name: 'stylist'
+}
+
 function submitHandler(e){
   e.preventDefault()
   
@@ -37,23 +55,23 @@ function submitHandler(e){
   let stylist_name = document.querySelector('#stylist-name')
   let offer_choice = document.querySelector('input[name="new-guest-offer"]:checked')
   
-  let bodyObj = {
-    bus_name: bus_name.value,
-    stylist_name: stylist_name.value,
-    offer: offer_choice.value
-  }
-  
-  createOffer(bodyObj)
+  bodyObj.bus_name = bus_name.value
+  bodyObj.stylist_name = stylist_name.value
+  bodyObj.offer = offer_choice.value
+  bodyObj.offer_choice = offer_choice['id']
 
-  
   bus_name.value = ''
   stylist_name.value = ''
+  offer_choice.value  = ''
   offer_choice.checked = false
+  
+  // createOffer(bodyObj)
+  offersContainer.innerHTML = ``
+  createOfferCard(bodyObj)
 
   // Remove modal after button click
   modalCreateNew.classList.remove('show-modal-create-new')
 }
-
 
 // assign variable for container where offers will go
 const offersContainer = document.querySelector('#offers-container')
@@ -68,13 +86,8 @@ function createOfferCard(offer){
   <p class='offer-busName'>${offer.bus_name}</p>
   <p class='offer-stylistName'>${offer.stylist_name}</p>
   <p class='offer-selected'>${offer.offer}
-  <br>
-  <br>
-  <button onclick='submit()'>Submit!</button>
-  <button id = 'delete-staged-offer' onclick='deleteOffer(${offer.id})'>Delete</button>
-  ` 
-  const deleteStagedBtn = document.getElementById('delete-staged-offer')
-  
+  `
+  // <button onclick='createOffer(offer)'>Approve</button>
   // append offerCard to the offersContainer
   offersContainer.appendChild(offerCard)
 }
@@ -82,15 +95,17 @@ function createOfferCard(offer){
 // function to display offer
 function displayOffers(arr){
   offersContainer.innerHTML = ``
-  // for(let i = 0; i < arr.length; i++){
-  //   createOfferCard(arr[i])
-  // }
   createOfferCard(arr[arr.length - 1])
 }
 
-// function submit(e){
-  
-// }
+
+const deleteOfferBtn = document.getElementById('delete-offer-btn')
+const approveOfferBtn = document.getElementById('approve-offer-btn')
+
+deleteOfferBtn.addEventListener('click', deleteOffer)
+
+approveOfferBtn.addEventListener('click', () => createOffer(bodyObj))
+
 
 
 // Submit create new offer button

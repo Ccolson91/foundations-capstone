@@ -28,25 +28,26 @@ app.use(sessions(session))
 app.post('/seed', seed)
 
 // homepage login and registration
-const { login, register, authenticate, logout } = require('./authcontroller.js')
+const { login, register, logout } = require('./authcontroller.js')
 // create and delete new offer
-const { createOffer, deleteOffer, home } = require('./controller.js')
+const { createOffer, deleteOffer, home, submitOffer } = require('./controller.js')
 
 app.get('/', home)
-app.get('/authenticate', authenticate)
+// app.get('/authenticate', authenticate)
 
 app.post('/register', register)
 
 app.post('login', login)
 
-app.get('/logout', logout)
+// app.get('/logout', logout)
 
 // app.post('/login', login)
 
 
 
-app.post('/create-new', createOffer)
+app.post('/existing-offers', createOffer)
 app.delete('/create-new/:id', deleteOffer)
+// app.post('/existing-offers', submitOffer)
 
 
 

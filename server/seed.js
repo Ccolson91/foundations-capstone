@@ -1,7 +1,5 @@
 require('dotenv').config()
-
 const Sequelize = require('sequelize')
-
 const {CONNECTION_STRING} = process.env
 
 const sequelize = new Sequelize(CONNECTION_STRING, {
@@ -12,8 +10,6 @@ const sequelize = new Sequelize(CONNECTION_STRING, {
     }
   }
 })
-
-
 
 module.exports = {
   seed: (req, res) => {

@@ -34,9 +34,9 @@ closeSignin.addEventListener('click', () => modalSignin.classList.remove('show-m
 window.addEventListener('click', e => e.target == modalSignin ? modalSignin.classList.remove('show-modal-signin') : false)
 
 // login function for axios POST request
-const login = body => axios.post('http://localhost:4040/login', body).then( res => {
-  if(res.data === "Login success"){
-    window.location.replace('/')
+const login = () => axios.get('http://localhost:4040/login').then( res => {
+  if(res.status === 200){
+    window.location.replace('http://127.0.0.1:5500/client/create-new.html')
   }
 }).catch(error => {
   console.log(error)

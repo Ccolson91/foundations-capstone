@@ -145,24 +145,12 @@ button:focus {
   right: 0;
   bottom: 0;
 }
-.modal-container-email {
-  background-color: rgba(0, 0, 0, 0.6);
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-}
 
 .modal-container-signup.show-modal-signup {
   display: block;
 }
 
 .modal-container-signin.show-modal-signin {
-  display: block;
-}
-.modal-container-email.show-modal-email {
   display: block;
 }
 
@@ -196,21 +184,6 @@ button:focus {
   animation-duration: var(--modal-duration);
 }
 
-.modal-email {
-  background-color: #fff;
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-  position: absolute;
-  overflow: hidden;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  max-width: 100%;
-  width: 400px;
-  animation-name: modalopen;
-  animation-duration: var(--modal-duration);
-}
-
 .modal-header-signup {
   background: var(--primary-color);
   color: #fff;
@@ -218,12 +191,6 @@ button:focus {
 }
 
 .modal-header-signin {
-  background: var(--primary-color);
-  color: #fff;
-  padding: 15px;
-}
-
-.modal-header-email {
   background: var(--primary-color);
   color: #fff;
   padding: 15px;
@@ -238,11 +205,6 @@ button:focus {
   /* border-bottom: 1px solid #333; */
 }
 
-.modal-header-email h3 {
-  margin: 0;
-  /* border-bottom: 1px solid #333; */
-}
-
 .modal-content-signup {
   padding: 20px;
 }
@@ -251,19 +213,11 @@ button:focus {
   padding: 20px;
 }
 
-.modal-content-email {
-  padding: 20px;
-}
-
 .modal-form-signup div {
   margin: 15px 0;
 }
 
 .modal-form-signin div {
-  margin: 15px 0;
-}
-
-.modal-form-email div {
   margin: 15px 0;
 }
 
@@ -277,22 +231,12 @@ button:focus {
   margin-bottom: 5px;
 }
 
-.modal-form-email label {
-  display: block;
-  margin-bottom: 5px;
-}
-
 .modal-form-signup .form-input-signup {
   padding: 8px;
   width: 100%;
 }
 
 .modal-form-signin .form-input-signin {
-  padding: 8px;
-  width: 100%;
-}
-
-.modal-form-email .form-input-email {
   padding: 8px;
   width: 100%;
 }
@@ -312,42 +256,6 @@ button:focus {
   top: 0;
   right: 0;
 }
-
-.close-btn-email {
-  background: transparent;
-  font-size: 25px;
-  position: absolute;
-  top: 0;
-  right: 0;
-}
-
-/* .form-control i {
-  position: absolute;
-  visibility: hidden;
-}
-
-.form-control small {
-  position: absolute;
-  left: 20px;
-  visibility: hidden;
-}
-
-.form-control.success input {
-  border-color: #2ecc71;
-}
-
-.form-control.error input {
-  border-color: #e74c4c;
-}
-
-.form-control.success i.fa-check-circle {
-  visibility: visible;
-  color: #2ecc71;
-}
-.form-control.error i.fa-exclamation-circle {
-  visibility: visible;
-  color: #e74c4c;
-} */
 
 @keyframes modalopen {
   from {

@@ -15,7 +15,7 @@ const deleteExistingOffer = id => axios.delete(`http://localhost:4040/existing-o
 function createExistingOfferCard(offer){
   const existingOfferCard = document.createElement('div')
   existingOfferCard.classList.add('existing-offer-card')
-  
+
 
   existingOfferCard.innerHTML = `
   <p class='offer-busName'>${offer.bus_name}</p>
@@ -30,7 +30,6 @@ function createExistingOfferCard(offer){
 
 function displayAllOffers(arr){
   existingOffersContainer.innerHTML = ``
-  console.log(arr)
   for(let i = 0; i < arr.length; i++){
     createExistingOfferCard(arr[i])
   }

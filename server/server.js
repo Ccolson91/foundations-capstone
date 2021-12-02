@@ -1,27 +1,19 @@
 require('dotenv').config()
 const path = require('path')
+const nodemailer = require('nodemailer')
+const bodyParser = require('body-parser')
 const express = require('express')
-const cookieParser = require('cookie-parser')
-const sessions = require('express-session')
 const cors = require('cors')
 const app = express()
 const { SERVER_PORT } = process.env
 const { seed } = require('./seed.js')
 
-
 app.use(express.json())
-app.use(express.urlencoded({ extended: true }))
-app.use(cookieParser())
+// app.use(express.urlencoded({ extended: true }))
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.json())
 app.use(cors())
 
-let session = {
-  secret: process.env.SESSION_SECRET,
-  cookie: { maxAge: 1000 * 60 * 60 },
-  saveUninitialized: false,
-  resave: false
-}
-
-app.use(sessions(session))
 
 
 //Seed Database
@@ -34,6 +26,7 @@ const { createOffer, deleteOffer, home, getAllOffers, deleteExistingOffer } = re
 
 app.get('/', home)
 // app.get('/authenticate', authenticate)
+// app.post('/sendemail', sendEmail)
 
 app.post('/register', register)
 

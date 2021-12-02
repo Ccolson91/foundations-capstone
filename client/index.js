@@ -1,7 +1,3 @@
-// const { default: axios } = require("axios")
-
-// const { default: axios } = require("axios")
-
 const toggle = document.getElementById('toggle')
 // Toggle Navigation
 toggle.addEventListener('click', () => document.body.classList.toggle('show-nav'))

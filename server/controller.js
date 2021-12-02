@@ -17,10 +17,31 @@ const sequelize = new Sequelize(CONNECTION_STRING, {
 
 module.exports = {
   home: (req, res) => res.status(200).sendFile(path.join(__dirname, '../client/index.html')),
+  // sendEmail: (req, res) => {
+  //   let to
+  //   let subject
+  //   let body
+  //   upload(req, res, function(err){
+  //     if(err){
+  //       console.log(err)
+  //       return res.end('Something went wrong')
+  //     } else {
+  //       to = req.body.to
+  //       subject = req.body.subject
+  //       body = req.body.body
+
+  //       console.log(to)
+  //       console.log(subject)
+  //       console.log(body)
+  //     }
+  //   })
+  // },
   getAllOffers: (req, res) => {
     sequelize.query(`
-      select * from current_offers
-      where offer_id is not null;
+    select bus_name, stylist_name,offer_name, current_offers.offer_id
+    from current_offers
+    join offers
+    on  current_offers.offer_id = offers.offer_id;
     `)
     .then((dbRes) => res.status(200).send(dbRes[0]))
     .catch((err) => console.log(err))
@@ -33,6 +54,7 @@ module.exports = {
     values('${offer}');
     insert into current_offers (bus_name, stylist_name, offer_id)
     values('${bus_name}', '${stylist_name}', '${offer_choice}');
+
     select bus_name, stylist_name, offer_name, current_offers.offer_id
     from offers
     join current_offers

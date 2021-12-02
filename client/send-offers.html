@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
+  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="send-offers.css">
+  <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+  <title>Send Offers</title>
+</head>
+<body>
+  <nav>
+    <div class="logo">
+      <img src="https://randomuser.me/api/portraits/women/76.jpg" alt="user"/>
+    </div>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="create-new.html">Create New</a></li>
+      <li><a href="existing-offers.html">Existing Offers</a></li>
+      <li><a href="send-offers.html">Send Offers</a></li>
+    </ul>
+  </nav>
+
+  <header>
+    <button id="toggle" class="toggle">
+      <i class="fa fa-bars fa-2x"></i>
+    </button>
+
+    <h1>Digital Coupon Generator</h1>
+
+    <p>Reaching your target audience just got easier.</p>
+
+  </header>
+
+  <div class="container">
+
+    <h2>Send Your offer!</h2>
+
+    <!-- <h2> Tell me more</h2> -->
+
+    <p>Coming Soon!</p>
+    <p>We understand the importance of getting your digital coupons out to the world. That's why we're introducing a new feature to allow you to email them to your potential new clients. Check back with us soon!</p>
+    <div class="email-container">
+      <form action="/sendemail" method="POST" enctype="multipart/form-data">
+        <div class="form-group form-input">
+            <input class="form-control" type="email" name="to" required placeholder="To:">
+        </div>
+        <div class="form-group form-input">
+            <input type="text" class="form-control" name="subject" placeholder="Subject:" required id="">
+        </div>
+        <div class="form-group form-input">
+            <textarea required class="form-control" name="body" id="" cols="30" rows="10" placeholder="Body:"></textarea>
+        </div>
+        <label for="attachment">Attachment:</label>
+        <div class="form-group">
+            <input type="file" required class="form-control" name="image" id="">
+        </div>
+        <div class="form-group">
+            <button id="send-email-btn" type="submit" class="btn btn-block btn-danger">
+                Send Message
+            </button>
+        </div>
+    </form>
+    </div>
+  </div>
+
+  <script src="send-offers.js"></script>
+</body>
+</html>

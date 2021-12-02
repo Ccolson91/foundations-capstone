@@ -126,6 +126,10 @@ button:focus {
   width: 800px;
 }
 
+.index-img {
+  height: 500px;
+}
+
 .modal-container-signup {
   background-color: rgba(0, 0, 0, 0.6);
   display: none;

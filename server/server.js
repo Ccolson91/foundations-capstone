@@ -11,7 +11,7 @@ app.use(express.json())
 app.use(cors())
 
 // homepage login and registration
-const { login, register, logout } = require('./authcontroller.js')
+const { login, register } = require('./authcontroller.js')
 // create and delete new offer
 const { createOffer, deleteOffer, home, getAllOffers, deleteExistingOffer } = require('./controller.js')
 

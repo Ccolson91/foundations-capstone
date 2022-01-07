@@ -76,6 +76,6 @@ module.exports = {
       ).then(() => {
         console.log('DB seeded!')
         res.sendStatus(200)
-      }).catch(error => console.log('guess what? error seeding DB', error))
+      }).catch(error => console.log('error seeding DB', error))
   }
 }

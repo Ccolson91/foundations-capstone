@@ -34,48 +34,6 @@ Users can delete their current digital coupons and remove them from the database
 
 ![Create Coupon Gif](/img/currentoffers.gif)
 
-## <a name='setup'></a>Setup/Installation
-
-#### Requirements:
-
-- Node.js / Express
-- PostgreSQL
-
-To run this app on your local computer, follow these steps:
-
-Clone repository:
-
-```
-$ git clone https://github.com/Ccolson91/foundations-capstone
-```
-
-Create Runtime environment:
-
-```
-$ git init
-```
-
-Install dependencies:
-
-```
-$ npm install express cors axios sequelize dotenv pg pg-hstore
-```
-
-Install developer dependencies:
-
-```
-$ npm i nodemon
-```
-
-...some database stuff....
-...doo doo doo doo....
-
-Run app from the command line:
-
-```
-$ npm start
-```
-
 ## <a name='developer'></a>About the Dev
 
 Christian Colson has a background in sales & marketing but decided to take the plunge into software development because of all the wonderful possibilities it opens up. He believes through automation and a little bit of creativity, small businesses can thrive in ways they've never been able to do previously. As technology advances, he is a great resource for small businesses to have on their side. To learn more about Christian you can visit him on LinkedIn by clicking <a href='https://www.linkedin.com/in/christian-colson-89785a20a/'>Here.</a>

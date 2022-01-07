@@ -1,51 +1,50 @@
-// Toggle Navigation
+// TOGGLE NAVIGATION
 const toggle = document.getElementById('toggle')
 toggle.addEventListener('click', () => document.body.classList.toggle('show-nav'))
 
+// VARIABLES FROM HTML
 const modalCreateNew = document.getElementById('modal-create-new')
 const createNew = document.getElementById('create-new')
 const closeCreateNew = document.getElementById('close-create-new')
 const submitForm = document.getElementById('create-new-form')
+const offersContainer = document.querySelector('#offers-container')
+const deleteOfferBtn = document.getElementById('delete-offer-btn')
+const approveOfferBtn = document.getElementById('approve-offer-btn')
 
-// Show modal create new
+// CREATE NEW MODAL (DISPLAY, HIDE, OUTSIDE CLICK)
 createNew.addEventListener('click', () => {
   modalCreateNew.classList.add('show-modal-create-new')
 })
-// Hide modal create new
+
 closeCreateNew.addEventListener('click', () => {
   modalCreateNew.classList.remove('show-modal-create-new')
 })
-//Hide modal create new on outside click
+
 window.addEventListener('click', e => e.target == modalCreateNew ? modalCreateNew.classList.remove('show-modal-create-new') : false)
 
-// assign a variable to the base url
+// BASE URL
 const baseURL =  `http://localhost:4040/create-new`
-// assigns a variable to function that runs displayOffers function on offers
+
+// SENDS DATA TO FRONT-END
 const offersCallback = ({ data: offers }) => displayOffers(offers)
+
+// REDIRECTS TO EXISTING OFFERS PAGE
 const redirect = () => {
     window.location.replace('http://127.0.0.1:5500/client/existing-offers.html')}
-//assigns variable to error callback
-// const errCallback = err => console.log(err.response.data)
-// create offer - axios POST request
-const createOffer = body => axios.post(`http://localhost:4040/existing-offers`, body).then(redirect).catch(error => { console.log(error)})
-//delete offer - axios DELETE request
-const deleteOffer = id => axios.delete(`${baseURL}/${id}`).then(offersCallback).catch( error => { console.log(error)})
-//submit offer - axios PUT request
-// const submitOffer = body => axios.post(`http://localhost:4040/existing-offers/`, body).then( res => {
-//   if(res.status === 200){
-//     window.location.replace('http://127.0.0.1:5500/client/existing-offers.html')
-//   }
-// }).catch(error => {
-//   console.log(error)
-//   alert('uh oh. Your request did not work')
-// })
 
-//handler function to be passed in to event listener
+// FINALIZE OFFERS USING POST REQUEST
+const createOffer = body => axios.post(`http://localhost:4040/existing-offers`, body).then(redirect).catch(error => { console.log(error)})
+
+// DELETE OFFERS PASSING IN ID
+const deleteOffer = id => axios.delete(`${baseURL}/${id}`).then(offersCallback).catch( error => { console.log(error)})
+
+// HANDLER FUNCTION TO BE PASSED IN TO SUBMIT HANDLER
 let bodyObj = {
   bus_name: 'business',
   stylist_name: 'stylist'
 }
 
+// SUBMIT HANDLER FUNCTION
 function submitHandler(e){
   e.preventDefault()
   
@@ -63,48 +62,33 @@ function submitHandler(e){
   offer_choice.value  = ''
   offer_choice.checked = false
   
-  // createOffer(bodyObj)
+  // PASS IN BODY OBJECT TO CREATE OFFER BODY
   offersContainer.innerHTML = ``
   createOfferCard(bodyObj)
 
-  // Remove modal after button click
+  // MODAL REMOVAL ON CLICK
   modalCreateNew.classList.remove('show-modal-create-new')
 }
 
-// assign variable for container where offers will go
-const offersContainer = document.querySelector('#offers-container')
-// function to create card for offer to go
+// CREATES OFFER CARD FOR OFFERS
 function createOfferCard(offer){
-  // creates new div and assigns to a variable
   const offerCard = document.createElement('div')
-  // add classlist to the variable created
   offerCard.classList.add('offer-card')
-  // add html to the variable offerCard
   offerCard.innerHTML = `
   <p class='offer-busName'>${offer.bus_name}</p>
   <p class='offer-stylistName'>${offer.stylist_name}</p>
   <p class='offer-selected'>${offer.offer}</p>
   `
-  // <button onclick='createOffer(offer)'>Approve</button>
-  // append offerCard to the offersContainer
   offersContainer.appendChild(offerCard)
 }
 
-// function to display offer
+// DISPLAY OFFERS ON FRONT-END
 function displayOffers(arr){
   offersContainer.innerHTML = ``
   createOfferCard(arr[arr.length - 1])
 }
 
-
-const deleteOfferBtn = document.getElementById('delete-offer-btn')
-const approveOfferBtn = document.getElementById('approve-offer-btn')
-
-deleteOfferBtn.addEventListener('click', deleteOffer)
-
-approveOfferBtn.addEventListener('click', () => createOffer(bodyObj))
-
-
-
-// Submit create new offer button
+// SUBMIT, APPROVE AND DELETE EVENT LISTENERS
 submitForm.addEventListener('submit', submitHandler)
+approveOfferBtn.addEventListener('click', () => createOffer(bodyObj))
+deleteOfferBtn.addEventListener('click', deleteOffer)

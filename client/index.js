@@ -1,7 +1,8 @@
+// TOGGLE NAVIGATION
 const toggle = document.getElementById('toggle')
-// Toggle Navigation
 toggle.addEventListener('click', () => document.body.classList.toggle('show-nav'))
 
+// VARIABLES FROM HTML
 const modalSignup = document.getElementById('modal-signup')
 const signUp = document.getElementById('open-signup')
 const closeSignup = document.getElementById('close-signup')
@@ -14,26 +15,21 @@ const signUpForm = document.getElementById('modal-form-signup')
 const signInForm = document.getElementById('modal-form-signin')
 
 
-// Show modal sign up
+// SIGN UP MODAL (SHOW, HIDE, OUTSIDE CLICK)
 signUp.addEventListener('click', () => modalSignup.classList.add('show-modal-signup'))
 
-// Hide modal sign up
 closeSignup.addEventListener('click', () => modalSignup.classList.remove('show-modal-signup'))
 
-// Hide modal sign up on outside click
 window.addEventListener('click', e => e.target == modalSignup ? modalSignup.classList.remove('show-modal-signup') : false)
 
-// Show modal sign in
+// SIGN IN MODAL (SHOW, HIDE, OUTSIDE CLICK)
 signIn.addEventListener('click', () => modalSignin.classList.add('show-modal-signin'))
 
-// Hide modal sign in
 closeSignin.addEventListener('click', () => modalSignin.classList.remove('show-modal-signin'))
-
-// Hide modal sign in on outside click
 
 window.addEventListener('click', e => e.target == modalSignin ? modalSignin.classList.remove('show-modal-signin') : false)
 
-// login function for axios POST request
+// LOGIN FUNCTION FOR LOGIN HANDLER - GET REQUEST
 const login = () => axios.get('http://localhost:4040/login').then( res => {
   if(res.status === 200){
     window.location.replace('http://127.0.0.1:5500/client/create-new.html')
@@ -43,7 +39,7 @@ const login = () => axios.get('http://localhost:4040/login').then( res => {
   alert('uh oh. Your request did not work')
 })
 
-// registration function for axios POST request
+// REGISTER FUNCTION FOR REGISTRATION HANDLER - POST REQUEST
 const register = body => axios.post('http://localhost:4040/register', body).then( res => {
   if(res.status === 200){
     window.location.replace('http://127.0.0.1:5500/client/create-new.html')
@@ -53,14 +49,7 @@ const register = body => axios.post('http://localhost:4040/register', body).then
   alert('uh oh. Your request did not work')
 })
 
-// Logout function with axios GET request
-const logout = () => {
-  axios.get('http://localhost:4040/logout', { withCredentials: true })
-    .then(res => window.location.replace('/'))
-}
-
-// login handler function
-
+// USER LOG-IN HANDLER
 function loginSubmitHandler(e){
   e.preventDefault()
 
@@ -71,14 +60,14 @@ function loginSubmitHandler(e){
     user_email: userEmail.value,
     user_password: userPassword.value
   }
+
   login(bodyObj)
 
   userEmail.value = ''
   userPassword.value = ''
 }
 
-// register handler function
-
+// REGISTRATION HANDLER
 function registerSubmitHandler(e){
   e.preventDefault()
 
@@ -97,7 +86,9 @@ function registerSubmitHandler(e){
     newUserEmail: newUserEmail.value,
     newUserPassword: newUserPassword.value
   }
-  console.log(bodyObj)
+
+  // console.log(bodyObj)
+
   register(bodyObj)
 
   newUserName.value = ''
@@ -108,17 +99,6 @@ function registerSubmitHandler(e){
   modalSignup.classList.remove('show-modal-signup')
 }
 
-//Form authentication
-// checkSession = async () => {
-//   const response = await axios.get('http://localhost:4040/authenticate', { withCredentials: true })
-//   const data = response.data
-//   if(data.username){
-//     window.location.replace('/')
-//   }
-// }
-
-
-
-// document.addEventListener('DOMContentLoaded', checkSession)
+// FORM EVENT LISTENTERS
 signUpForm.addEventListener('submit', registerSubmitHandler)
 signInForm.addEventListener('submit', loginSubmitHandler)

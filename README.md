@@ -5,7 +5,7 @@
 _[Summary](#summary)
 _[Tech Stack](#tech-stack)
 _[Features](#features)
-_[Setup/Installation](#setup) \*[About the Developer](#developer)
+_[About the Developer](#developer)
 
 ## <a name='summary'></a>Summary
 
